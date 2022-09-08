@@ -4,7 +4,7 @@ ifdef::env-github[]
 :outfilesuffix: .adoc
 :caution-caption: :fire:
 :important-caption: :exclamation:
-:note-caption: :page_with_curl:
+:note-caption: :diamond_shape_with_a_dot_inside:
 :tip-caption: :bulb:
 :warning-caption: :warning:
 endif::[]
