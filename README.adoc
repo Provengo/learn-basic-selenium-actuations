@@ -13,14 +13,14 @@ endif::[]
 
 A Provnego project for demonstrating the basics of Selenium-based actuation. This project searches for "pizza", "strawberry", or "banana" in the https://ecosia.org[Ecosia] search engine, and validates that pages containing these terms were indeed found.
 
-IMPORTANT: This demo project does not look into any other features of the Provengo system, such as DSL, multi-level event flows, optimized test suite generation, etc. Just Selenium actuation and some PRovengo extensions to JavaScript.
+IMPORTANT: This demo project does not look into any other features of the Provengo system, such as DSLs, multi-level event flows, optimized test suite generation, etc. Just Selenium actuation and some Provengo extensions to JavaScript.
 
 IMPORTANT: Provengo is not publicly accessible yet. If you find this repo interesting and wand to join our closed beta, please contact hello@provengo.tech.
 
 NOTE: https://www.selenium.dev/downloads/[Selenium server (grid)], Chrome, and the chrome selenium driver need to be installed for this. For the Chrome driver, see the (https://www.selenium.dev/downloads/["Browsers" section]). You'll have to scroll down quite a bit.
 
 
-## Important Files
+## Files of Interest
 
 * link:SimpleSearch.js[] A script for testing a web search engine.
 * link:provengo.yml[] Configuration file.
@@ -31,7 +31,7 @@ NOTE: In the below listings, we assume that `provengo.bat` is in the path, and t
 
 ### Randomized Dry Run 
 
-Perform a single run through the specification, with no actuations. Good for "Sanity checks", i.e. to see examples of what can happen. Does not require any Selenium server.
+Perform a single run through the specification, with no actuations. Good for "Sanity checks", e.g. to see examples of what can happen. Does not require any Selenium server.
 
     provengo.bat run --dry-run selenium-basics
 
@@ -83,7 +83,7 @@ Creates a report of the tests run, in the form of a static HTML site.
 ## NOTES
 
 * This is a very basic sample project that does not cover all system features. For example, we left suite optimizations and DSLs out.
-* To gain more visibility info what `provengo` is doing, invoke it with the `--verbose` flag between `provengo` and the verb, like so: 
+* To gain more visibility into what `provengo` is doing, invoke it with the `--verbose` flag between `provengo` and the verb, like so: 
 ```
     provengo.bat --verbose run selenium-sample
 ```
