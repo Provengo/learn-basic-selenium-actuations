@@ -2,23 +2,28 @@
 
 const URL = "https://duckduckgo.com";
 
-// Component repository, holds XPaths for UI elements.
+/**
+ * Component repository, holds XPaths for UI elements.
+ */
 const COMPONENTS = {
     searchField: "//input[@id='searchbox_input']",
     submitButton: "//button[@type='submit']",
     resultsDiv: "//div[@class='results--main']"
 };
 
-// Define a Selenium session. Nothing is opened yet.
-const seleniumSession = new SeleniumSession("s1");
+// Define a Selenium session. No window is opened yet.
+const seleniumSession = new SeleniumSession("user");
 
 bthread("basic search", function(){
 
-    // decide what we search for
+    // Go to search screen
+    seleniumSession.start(URL);
+    
+    // decide what we search for (this splits the scenario into 3 scenarios)
     let searchTerm = choose("pizza","banana","strawberry");
     
-    //// Go to search screen
-    seleniumSession.start(URL);
+    // Wait up to 10 seconds for the target component to be visible.
+    seleniumSession.waitForVisibility(COMPONENTS.searchField, 10000);
     
     // Enter search term
     seleniumSession.writeText(COMPONENTS.searchField, searchTerm);
@@ -27,7 +32,7 @@ bthread("basic search", function(){
 
     //// moving to the results screen
     // Wait for results for up to 10 seconds
-    seleniumSession.waitForVisibility(COMPONENTS.resultsDiv, 10);
+    seleniumSession.waitForVisibility(COMPONENTS.resultsDiv, 10000);
     // Assert that results were found
     seleniumSession.assertText( COMPONENTS.resultsDiv,
         searchTerm,
@@ -36,8 +41,17 @@ bthread("basic search", function(){
     );
     
     // Intentionally fail the test 1 out of 4 runs.
-    // Added to so the logs have more to show.
+    // Added to make the logs more interesting.
     if ( choose("ok","fine","pass","fail") === "fail" ) {
         seleniumSession.waitForVisibility("//notThere");
     }
+});
+
+/**
+ * Addition: if we chose to search for "strawberry",
+ * don't test the failure scenario.
+ */
+bthread("Don't fail after strawberry", function(){
+    waitFor(choiceEvent("strawberry"));
+    block(choiceEvent("fail"));
 });

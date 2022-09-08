@@ -1,18 +1,22 @@
 # SeleniumBasics
 
-A Provnego project for demonstrating the basics of Selenium-based actuation.
+A Provnego project for demonstrating the basics of Selenium-based actuation. This project searches for "pizza", "strawberry", or "banana" in the https://duckduckgo.com(DuckDuckGo) search engine, and validates that pages containing these terms were indeed found.
+
+IMPORTANT: This demo project does not look into any other features of the Provengo system, such as DSL, multi-level event flows, optimized test suite generation, etc. Just Selenium actuation and some PRovengo extensions to JavaScript.
+
+IMPORTANT: Provengo is not publicly accessible yet. If you find this repo interesting and wand to join our closed beta, please contact hello@provengo.tech.
+
+NOTE: https://www.selenium.dev/downloads/[Selenium server (grid)], Chrome, and the chrome selenium driver need to be installed for this. For the Chrome driver, see the (https://www.selenium.dev/downloads/["Browsers" section]). You'll have to scroll down quite a bit.
+
 
 ## Important Files
 
-* [SimpleSearch.js](SimpleSearch.js) A script for testing a web search engine.
-* [provengo.yml](provengo.yml) Configuration file.
+* xref:SimpleSearch.js A script for testing a web search engine.
+* xref:provengo.yml Configuration file.
 
 ## Useful Commands
 
-*⚠️ NOTE:* In the below listings, we assume that `provengo.bat` is in the path, and that `selenium-basics` is the path to this directory (i.e. run this code from the directory that directly contains `selenium-basics`). For UNIX systems, change `provengo.bat` to `provengo.sh`.
-
-*⚠️ NOTE:* [Selenium server (grid)](https://www.selenium.dev/downloads/), Chrome, and the chrome selenium driver need to be installed for this. For the Chrome driver, see the ["Browsers" section](https://www.selenium.dev/downloads/). You'll have to scroll down quite a bit.
-
+NOTE: In the below listings, we assume that `provengo.bat` is in the path, and that `selenium-basics` is the path to this directory (i.e. run this code from the directory that directly contains `selenium-basics`). For UNIX systems, change `provengo.bat` to `provengo.sh`.
 
 ### Randomized Dry Run 
 
@@ -38,12 +42,11 @@ The above flags can of course be used together.
 
 ### Visualize the Spec
 
+NOTE: This requires [Graphviz](http://graphviz.org) to be installed.
+
 Draw the specification in a PDF file.
 
     provengo.bat analyze -f pdf selenium-basics
-
-
-⚠️ NOTE: This requires [Graphviz](http://graphviz.org) to be installed.
 
 
 ### Sample Runs from the Spec
@@ -57,9 +60,7 @@ Sample 10 scenarios into a file. The scenarios are stored in a file called `samp
 
 Run the sampled tests as a single test suite.
 
-    provengo.bat run --run-ensemble --ensemble-file samples.json samples.json selenium-basics
-
-> Soon, the `--run-ensemble --ensemble-file` part will be replaced with `--run-source`.
+    provengo.bat run --run-source samples.json selenium-basics
 
 ### Create Run Logs
 
@@ -75,3 +76,4 @@ Creates a report of the tests run, in the form of a static HTML site.
 ```
     provengo.bat --verbose run selenium-sample
 ```
+* To display command options, type `provengo.bat` in the console. To display the reference for a specific command, add `-h` after it, like so: `provengo.bar run -h`.
