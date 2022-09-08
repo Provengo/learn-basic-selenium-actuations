@@ -1,21 +1,24 @@
 // @provengo summon selenium
 
-const URL = "https://duckduckgo.com";
+const URL = "https://ecosia.org";
 
 /**
  * Component repository, holds XPaths for UI elements.
  */
 const COMPONENTS = {
-    searchField: "//input[@id='searchbox_input']",
-    submitButton: "//button[@type='submit']",
-    resultsDiv: "//div[@class='results--main']"
+    searchField:    "//input[@name='q']",
+    submitButton:   "//button[@type='submit']",
+    resultsSection: "//section[@data-test-id='mainline']"
 };
 
 // Define a Selenium session. No window is opened yet.
 const seleniumSession = new SeleniumSession("user");
 
+/**
+ * "Main" test scenario: Open a browser window, types a search term, and 
+ * asserts that pages containing that term were found.
+ */
 bthread("basic search", function(){
-
     // Go to search screen
     seleniumSession.start(URL);
     
@@ -32,9 +35,9 @@ bthread("basic search", function(){
 
     //// moving to the results screen
     // Wait for results for up to 10 seconds
-    seleniumSession.waitForVisibility(COMPONENTS.resultsDiv, 10000);
+    seleniumSession.waitForVisibility(COMPONENTS.resultsSection, 10000);
     // Assert that results were found
-    seleniumSession.assertText( COMPONENTS.resultsDiv,
+    seleniumSession.assertText( COMPONENTS.resultsSection,
         searchTerm,
         TextAssertions.modifiers.IgnoreCase, 
         TextAssertions.modifiers.Contains
