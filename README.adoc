@@ -11,7 +11,7 @@ endif::[]
 
 # SeleniumBasics
 
-A Provnego project for demonstrating the basics of Selenium-based actuation. This project searches for "pizza", "strawberry", or "banana" in the https://duckduckgo.com(DuckDuckGo) search engine, and validates that pages containing these terms were indeed found.
+A Provnego project for demonstrating the basics of Selenium-based actuation. This project searches for "pizza", "strawberry", or "banana" in the https://duckduckgo.com[DuckDuckGo] search engine, and validates that pages containing these terms were indeed found.
 
 IMPORTANT: This demo project does not look into any other features of the Provengo system, such as DSL, multi-level event flows, optimized test suite generation, etc. Just Selenium actuation and some PRovengo extensions to JavaScript.
 
