@@ -1,3 +1,14 @@
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :page_with_curl:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
 # SeleniumBasics
 
 A Provnego project for demonstrating the basics of Selenium-based actuation. This project searches for "pizza", "strawberry", or "banana" in the https://duckduckgo.com(DuckDuckGo) search engine, and validates that pages containing these terms were indeed found.
@@ -11,8 +22,8 @@ NOTE: https://www.selenium.dev/downloads/[Selenium server (grid)], Chrome, and t
 
 ## Important Files
 
-* xref:SimpleSearch.js A script for testing a web search engine.
-* xref:provengo.yml Configuration file.
+* link:SimpleSearch.js[] A script for testing a web search engine.
+* link:provengo.yml[] Configuration file.
 
 ## Useful Commands
 
@@ -42,7 +53,7 @@ The above flags can of course be used together.
 
 ### Visualize the Spec
 
-NOTE: This requires [Graphviz](http://graphviz.org) to be installed.
+NOTE: This requires http://graphviz.org[Graphviz] to be installed.
 
 Draw the specification in a PDF file.
 
